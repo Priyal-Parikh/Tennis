@@ -14,4 +14,12 @@ public class TennisGameTest
         assertEquals( "Serena",game.getPlayerOneName() );
         assertEquals( "Maria",game.getPlayerTwoName() );
     }
+
+    @Test
+    public void testNewGameShouldReturnLoveAll()
+    {
+        String score = game.getScore();
+
+        assertEquals("Love All", score);
+    }
 }
