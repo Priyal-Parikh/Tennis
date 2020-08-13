@@ -52,4 +52,8 @@ public class TennisGame
     public void playerOneScores() {
         this.playerOneScore++;
     }
+
+    public void playerTwoScores() {
+        this.playerTwoScore++;
+    }
 }
