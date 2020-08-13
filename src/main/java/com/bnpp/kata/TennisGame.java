@@ -2,10 +2,12 @@ package com.bnpp.kata;
 
 public class TennisGame
 {
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
     private String playerOneName;
     private String playerTwoName;
-    private int playerOneScore = 0;
-    private int playerTwoScore = 0;
+    private int playerOneScore = ZERO;
+    private int playerTwoScore = ZERO;
 
     public TennisGame(String playerOneName, String playerTwoName) {
         this.playerOneName=playerOneName;
@@ -24,10 +26,10 @@ public class TennisGame
     public String getScore() {
         String score="";
 
-        if(playerOneScore==0 && playerTwoScore==0) {
+        if(playerOneScore== ZERO && playerTwoScore== ZERO) {
             score= "Love All";
         }
-        if(playerOneScore>0 || playerTwoScore>0) {
+        if(playerOneScore> ZERO || playerTwoScore> ZERO) {
             score= translateScore(playerOneScore)+","+translateScore(playerTwoScore);
         }
 
@@ -37,10 +39,10 @@ public class TennisGame
     private String translateScore(int numericScore) {
         String convertedScore="";
 
-        if(numericScore==0) {
+        if(numericScore== ZERO) {
             convertedScore = "Love";
         }
-        else if(numericScore==1) {
+        else if(numericScore== ONE) {
             convertedScore = "Fifteen";
         }
 
