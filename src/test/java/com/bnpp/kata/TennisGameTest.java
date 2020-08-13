@@ -6,13 +6,15 @@ import static org.junit.Assert.assertEquals;
 
 public class TennisGameTest
 {
-    TennisGame game = new TennisGame("Serena" , "Maria");
+    public static final String firstPlayer = "Serena";
+    public static final String secondPlayer = "Maria";
+    TennisGame game = new TennisGame(firstPlayer, secondPlayer);
 
     @Test
     public void testNewGameShouldReturnPlayerNames()
     {
-        assertEquals( "Serena",game.getPlayerOneName() );
-        assertEquals( "Maria",game.getPlayerTwoName() );
+        assertEquals( firstPlayer,game.getPlayerOneName() );
+        assertEquals( secondPlayer,game.getPlayerTwoName() );
     }
 
     @Test
@@ -80,7 +82,7 @@ public class TennisGameTest
 
         String score = game.getScore();
 
-        assertEquals("Maria wins", score);
+        assertEquals(secondPlayer+" wins", score);
     }
 
     @Test
