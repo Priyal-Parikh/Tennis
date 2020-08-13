@@ -4,6 +4,7 @@ public class TennisGame
 {
     public static final int ZERO = 0;
     public static final int ONE = 1;
+    public static final int TWO = 2;
     private final String playerOneName;
     private final String playerTwoName;
     private int playerOneScore = ZERO;
@@ -29,16 +30,14 @@ public class TennisGame
         if(playerOneScore== ZERO && playerTwoScore== ZERO) {
             score= "Love All";
         }
+
         if(playerOneScore> ZERO || playerTwoScore> ZERO) {
-            if(playerOneScore==playerTwoScore)
-            {
+            if(playerOneScore==playerTwoScore){
                 score= translateScore(playerOneScore)+" All";
             }
-            else
-            {
+            else{
                 score= translateScore(playerOneScore)+","+translateScore(playerTwoScore);
             }
-
         }
 
         return score;
@@ -52,6 +51,9 @@ public class TennisGame
         }
         else if(numericScore== ONE) {
             convertedScore = "Fifteen";
+        }
+        else if(numericScore== TWO) {
+            convertedScore = "Thirty";
         }
 
         return  convertedScore;
