@@ -1,5 +1,7 @@
 package com.bnpp.kata;
 
+import com.bnpp.kata.exception.TennisException;
+
 public class TennisGame
 {
     public static final int ZERO = 0;
@@ -29,6 +31,9 @@ public class TennisGame
 
     public String getScore() {
 
+        if(!validScore()) {
+            throw new TennisException("Incorrect Score");
+        }
         if (hasWinner()) {
             return playerWithHighestScore() + " wins";
         }
@@ -47,6 +52,16 @@ public class TennisGame
         return translateScore(playerOneScore)+","+translateScore(playerTwoScore);
     }
 
+    private boolean validScore() {
+        if(playerOneScore<ZERO || playerTwoScore<ZERO) {
+            return false;
+        }
+        if(playerTwoScore>=FOUR &&  playerOneScore >=FOUR && playerTwoScore-playerOneScore>ONE){
+            return false;
+        }
+        return true;
+    }
+
     private boolean hasWinner() {
         if(playerTwoScore >= FOUR && playerTwoScore >= playerOneScore + TWO )
             return true;
@@ -56,13 +71,13 @@ public class TennisGame
     }
 
     private boolean isDeuce() {
-        return playerOneScore >= 3 && playerTwoScore == playerOneScore;
+        return playerOneScore >= THREE && playerTwoScore == playerOneScore;
     }
 
     private boolean hasAdvantage() {
-        if (playerTwoScore >= 4 && playerTwoScore == playerOneScore + 1)
+        if (playerTwoScore >= FOUR && playerTwoScore == playerOneScore + ONE)
             return true;
-        if (playerOneScore >= 4 && playerOneScore == playerTwoScore + 1)
+        if (playerOneScore >= FOUR && playerOneScore == playerTwoScore + ONE)
             return true;
 
         return false;
@@ -77,22 +92,18 @@ public class TennisGame
     }
 
     private String translateScore(int numericScore) {
-        String convertedScore="";
-
-        if(numericScore== ZERO) {
-            convertedScore = "Love";
+        switch (numericScore) {
+            case 3:
+                return "Forty";
+            case 2:
+                return "Thirty";
+            case 1:
+                return "Fifteen";
+            case 0:
+                return "Love";
+            default:
+                throw new TennisException("Incorrect score");
         }
-        else if(numericScore== ONE) {
-            convertedScore = "Fifteen";
-        }
-        else if(numericScore== TWO) {
-            convertedScore = "Thirty";
-        }
-        else if(numericScore== THREE) {
-            convertedScore = "Forty";
-        }
-
-        return  convertedScore;
     }
 
     public void playerOneScores() {

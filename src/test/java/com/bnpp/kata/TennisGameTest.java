@@ -1,6 +1,9 @@
 package com.bnpp.kata;
 
+import com.bnpp.kata.exception.TennisException;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,6 +12,9 @@ public class TennisGameTest
     public static final String firstPlayer = "Serena";
     public static final String secondPlayer = "Maria";
     TennisGame game = new TennisGame(firstPlayer, secondPlayer);
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Test
     public void testNewGameShouldReturnPlayerNames()
@@ -103,6 +109,17 @@ public class TennisGameTest
         String score = game.getScore();
 
         assertEquals("Advantage "+secondPlayer, score);
+    }
+
+    @Test
+    public void testShouldRaiseExceptionIfScoreIsNotCorrect(){
+
+        createScore(5, 8);
+
+        exceptionRule.expect(TennisException.class);
+        exceptionRule.expectMessage("Incorrect Score");
+
+        String score = game.getScore();
     }
 
     private void createScore(int playerOneBalls, int playerTwoBalls) {
