@@ -33,6 +33,9 @@ public class TennisGame
             return playerWithHighestScore() + " wins";
         }
 
+        if(isDeuce())
+            return "Deuce";
+
         if(playerOneScore==playerTwoScore){
             return translateScore(playerOneScore)+" All";
         }
@@ -46,6 +49,10 @@ public class TennisGame
         else if(playerOneScore >= FOUR && playerOneScore >= playerTwoScore + TWO)
             return true;
         return false;
+    }
+
+    private boolean isDeuce() {
+        return playerOneScore >= 3 && playerTwoScore == playerOneScore;
     }
 
     private String playerWithHighestScore() {
