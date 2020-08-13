@@ -33,6 +33,10 @@ public class TennisGame
             return playerWithHighestScore() + " wins";
         }
 
+        if (hasAdvantage()) {
+            return "Advantage " + playerWithHighestScore();
+        }
+
         if(isDeuce())
             return "Deuce";
 
@@ -53,6 +57,15 @@ public class TennisGame
 
     private boolean isDeuce() {
         return playerOneScore >= 3 && playerTwoScore == playerOneScore;
+    }
+
+    private boolean hasAdvantage() {
+        if (playerTwoScore >= 4 && playerTwoScore == playerOneScore + 1)
+            return true;
+        if (playerOneScore >= 4 && playerOneScore == playerTwoScore + 1)
+            return true;
+
+        return false;
     }
 
     private String playerWithHighestScore() {

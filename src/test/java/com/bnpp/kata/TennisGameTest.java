@@ -95,6 +95,16 @@ public class TennisGameTest
         assertEquals("Deuce", score);
     }
 
+    @Test
+    public void testPlayerTwoHasAdvantageOverPlayerOne(){
+
+        createScore(4, 5);
+
+        String score = game.getScore();
+
+        assertEquals("Advantage "+secondPlayer, score);
+    }
+
     private void createScore(int playerOneBalls, int playerTwoBalls) {
         for(int i=0; i<playerOneBalls; i++) {
             game.playerOneScores();
