@@ -5,6 +5,8 @@ public class TennisGame
     public static final int ZERO = 0;
     public static final int ONE = 1;
     public static final int TWO = 2;
+    public static final int THREE = 3;
+
     private final String playerOneName;
     private final String playerTwoName;
     private int playerOneScore = ZERO;
@@ -54,6 +56,9 @@ public class TennisGame
         }
         else if(numericScore== TWO) {
             convertedScore = "Thirty";
+        }
+        else if(numericScore== THREE) {
+            convertedScore = "Fourty";
         }
 
         return  convertedScore;

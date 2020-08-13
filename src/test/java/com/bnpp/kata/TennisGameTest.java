@@ -45,10 +45,12 @@ public class TennisGameTest
 
     @Test
     public void testBothPlayerScoresFirstBall(){
+
         game.playerOneScores();
         game.playerTwoScores();
 
         String score = game.getScore();
+
         assertEquals("Fifteen All", score);
     }
 
@@ -57,7 +59,18 @@ public class TennisGameTest
         createScore(2,0);
 
         String score = game.getScore();
+
         assertEquals("Thirty,Love", score);
+    }
+
+    @Test
+    public void testPlayerOneScoresFirstThreeBalls(){
+
+        createScore(3, 0);
+
+        String score = game.getScore();
+
+        assertEquals("Fourty,Love", score);
     }
 
     private void createScore(int playerOneBalls, int playerTwoBalls) {
