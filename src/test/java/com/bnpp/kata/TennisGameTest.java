@@ -73,6 +73,16 @@ public class TennisGameTest
         assertEquals("Fourty,Love", score);
     }
 
+    @Test
+    public void testPlayerTwoScoresAllFourBallsToWinGame(){
+
+        createScore(0, 4);
+
+        String score = game.getScore();
+
+        assertEquals("Maria wins", score);
+    }
+
     private void createScore(int playerOneBalls, int playerTwoBalls) {
         for(int i=0; i<playerOneBalls; i++) {
             game.playerOneScores();

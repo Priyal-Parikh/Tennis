@@ -6,6 +6,7 @@ public class TennisGame
     public static final int ONE = 1;
     public static final int TWO = 2;
     public static final int THREE = 3;
+    public static final int FOUR = 4;
 
     private final String playerOneName;
     private final String playerTwoName;
@@ -34,6 +35,16 @@ public class TennisGame
         }
 
         if(playerOneScore> ZERO || playerTwoScore> ZERO) {
+
+            if(playerTwoScore>=FOUR && playerTwoScore>=playerOneScore+TWO)
+            {
+                return playerTwoName+" wins";
+            }
+            else if(playerOneScore>=FOUR && playerOneScore>=playerTwoScore+TWO)
+            {
+                return playerTwoName+" wins";
+            }
+
             if(playerOneScore==playerTwoScore){
                 score= translateScore(playerOneScore)+" All";
             }
