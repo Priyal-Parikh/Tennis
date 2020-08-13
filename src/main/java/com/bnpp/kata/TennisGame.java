@@ -36,13 +36,8 @@ public class TennisGame
 
         if(playerOneScore> ZERO || playerTwoScore> ZERO) {
 
-            if(playerTwoScore>=FOUR && playerTwoScore>=playerOneScore+TWO)
-            {
-                return playerTwoName+" wins";
-            }
-            else if(playerOneScore>=FOUR && playerOneScore>=playerTwoScore+TWO)
-            {
-                return playerTwoName+" wins";
+            if (hasWinner()) {
+                return playerWithHighestScore() + " wins";
             }
 
             if(playerOneScore==playerTwoScore){
@@ -54,6 +49,22 @@ public class TennisGame
         }
 
         return score;
+    }
+
+    private boolean hasWinner() {
+        if(playerTwoScore >= FOUR && playerTwoScore >= playerOneScore + TWO )
+            return true;
+        if(playerOneScore >= FOUR && playerOneScore >= playerTwoScore + TWO)
+            return true;
+        return false;
+    }
+
+    private String playerWithHighestScore() {
+        if (playerOneScore > playerTwoScore) {
+            return playerOneName;
+        } else {
+            return playerTwoName;
+        }
     }
 
     private String translateScore(int numericScore) {
