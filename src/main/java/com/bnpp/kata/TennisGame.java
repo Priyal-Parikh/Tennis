@@ -30,7 +30,15 @@ public class TennisGame
             score= "Love All";
         }
         if(playerOneScore> ZERO || playerTwoScore> ZERO) {
-            score= translateScore(playerOneScore)+","+translateScore(playerTwoScore);
+            if(playerOneScore==playerTwoScore)
+            {
+                score= translateScore(playerOneScore)+" All";
+            }
+            else
+            {
+                score= translateScore(playerOneScore)+","+translateScore(playerTwoScore);
+            }
+
         }
 
         return score;
