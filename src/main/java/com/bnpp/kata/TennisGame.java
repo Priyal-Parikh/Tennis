@@ -4,8 +4,8 @@ public class TennisGame
 {
     public static final int ZERO = 0;
     public static final int ONE = 1;
-    private String playerOneName;
-    private String playerTwoName;
+    private final String playerOneName;
+    private final String playerTwoName;
     private int playerOneScore = ZERO;
     private int playerTwoScore = ZERO;
 
