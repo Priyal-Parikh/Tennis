@@ -70,7 +70,7 @@ public class TennisGameTest
 
         String score = game.getScore();
 
-        assertEquals("Fourty,Love", score);
+        assertEquals("Forty,Love", score);
     }
 
     @Test

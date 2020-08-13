@@ -28,33 +28,22 @@ public class TennisGame
     }
 
     public String getScore() {
-        String score="";
 
-        if(playerOneScore== ZERO && playerTwoScore== ZERO) {
-            score= "Love All";
+        if (hasWinner()) {
+            return playerWithHighestScore() + " wins";
         }
 
-        if(playerOneScore> ZERO || playerTwoScore> ZERO) {
-
-            if (hasWinner()) {
-                return playerWithHighestScore() + " wins";
-            }
-
-            if(playerOneScore==playerTwoScore){
-                score= translateScore(playerOneScore)+" All";
-            }
-            else{
-                score= translateScore(playerOneScore)+","+translateScore(playerTwoScore);
-            }
+        if(playerOneScore==playerTwoScore){
+            return translateScore(playerOneScore)+" All";
         }
 
-        return score;
+        return translateScore(playerOneScore)+","+translateScore(playerTwoScore);
     }
 
     private boolean hasWinner() {
         if(playerTwoScore >= FOUR && playerTwoScore >= playerOneScore + TWO )
             return true;
-        if(playerOneScore >= FOUR && playerOneScore >= playerTwoScore + TWO)
+        else if(playerOneScore >= FOUR && playerOneScore >= playerTwoScore + TWO)
             return true;
         return false;
     }
@@ -80,7 +69,7 @@ public class TennisGame
             convertedScore = "Thirty";
         }
         else if(numericScore== THREE) {
-            convertedScore = "Fourty";
+            convertedScore = "Forty";
         }
 
         return  convertedScore;
